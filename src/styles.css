@@ -15,14 +15,14 @@ td {
   padding: 10px;
 }
 
-th.name {
-  width: 50%;
-}
-
-th.due-date {
+th.course {
   width: 20%;
 }
 
-th.source {
+th.name {
+  width: 45%;
+}
+
+th.due-date {
   width: 20%;
 }
