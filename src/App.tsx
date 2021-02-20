@@ -36,31 +36,35 @@ function App() {
   return (
     <div className="parent">
       <table className="assignments-table">
-        <tr>
-          <th className="course">Course</th>
-          <th className="name">Name</th>
-          <th className="due-date">Due Date</th>
-          <th className="source">Source</th>
-        </tr>
+        <thead>
+          <tr>
+            <th className="course">Course</th>
+            <th className="name">Name</th>
+            <th className="due-date">Due Date</th>
+            <th className="source">Source</th>
+          </tr>
+        </thead>
 
-        {assignments.map(function (assignment) {
-          let options = {
-            hour: "numeric",
-            minute: "numeric",
-            weekday: "short",
-            month: "short",
-            day: "2-digit",
-          };
+        <tbody>
+          {assignments.map(function (assignment) {
+            let options = {
+              hour: "numeric",
+              minute: "numeric",
+              weekday: "short",
+              month: "short",
+              day: "2-digit",
+            };
 
-          return (
-            <tr>
-              <td>{assignment.course}</td>
-              <td>{assignment.name}</td>
-              <td>{assignment.due_date.toLocaleString("en-CA", options)}</td>
-              <td>Canvas</td>
-            </tr>
-          );
-        })}
+            return (
+              <tr key={assignment.name.toString()}>
+                <td>{assignment.course}</td>
+                <td>{assignment.name}</td>
+                <td>{assignment.due_date.toLocaleString("en-CA", options)}</td>
+                <td>Canvas</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
