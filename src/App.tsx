@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [courses ,setCourses] = useState(Object);
 
   useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
+    fetch('/data').then(res => res.json()).then(data => {
+      setCourses(data);
+    })
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <p>Current time: {currentTime}.</p>
+        {Object.keys(courses).map(function(key) {
+          if(courses[key])
+          {
+            return (
+              <li>{key} - {courses[key].length}</li>
+              
+            )
+          }
+          return null
+        })}
       </header>
     </div>
   );
